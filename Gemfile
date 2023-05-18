@@ -11,3 +11,5 @@ gem "execjs", "~> 2.8"
 gem "jekyll-theme-console"
 
 gem "minimal-mistakes-jekyll"
+
+gem 'faraday-retry'
