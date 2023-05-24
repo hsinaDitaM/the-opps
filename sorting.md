@@ -1,34 +1,85 @@
 # PLAN
 1. Data Structure: Define a data structure to store NBA statistics. For example, you can create a class called PlayerStats with attributes like name, points, rebounds, assists, etc. You can also create a list to store instances of the PlayerStats class.
  
- ```python
-class PlayerStats:
-    def __init__(self, name, points, rebounds, assists):
-        self.name = name
-        self.points = points
-        self.rebounds = rebounds
-        self.assists = assists
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Player Stats</title>
+  <script>
+    class PlayerStats {
+      constructor(name, points, rebounds, assists) {
+        this.name = name;
+        this.points = points;
+        this.rebounds = rebounds;
+        this.assists = assists;
+      }
+    }
 
-# Example list of player statistics
-player_stats_list = [
-    PlayerStats("LeBron James", 27.4, 8.5, 7.4),
-    PlayerStats("Stephen Curry", 30.1, 5.5, 6.2),
-    PlayerStats("Kevin Durant", 29.3, 7.1, 5.6),
-    PlayerStats("Giannis Antetokounmpo", 28.1, 11.0, 6.1),
-    # Add more player stats...
-]
+    // Example list of player statistics
+    var playerStatsList = [
+      new PlayerStats("LeBron James", 27.4, 8.5, 7.4),
+      new PlayerStats("Stephen Curry", 30.1, 5.5, 6.2),
+      new PlayerStats("Kevin Durant", 29.3, 7.1, 5.6),
+      new PlayerStats("Giannis Antetokounmpo", 28.1, 11.0, 6.1)
+      // Add more player stats...
+    ];
 
-def sort_stats_by_attribute(stats_list, attribute):
-    return sorted(stats_list, key=lambda x: getattr(x, attribute))
+    function sortStatsByAttribute(statsList, attribute) {
+      return statsList.sort(function(a, b) {
+        return a[attribute] - b[attribute];
+      });
+    }
 
-# Example usage to sort player stats by points
-sorted_stats = sort_stats_by_attribute(player_stats_list, 'points')
+    function printStats(statsList) {
+      var table = document.getElementById("statsTable");
+      table.innerHTML = ""; // Clear existing table contents
 
-def print_stats(stats_list):
-    for player in stats_list:
-        print(f"Player: {player.name}\tPoints: {player.points}\tRebounds: {player.rebounds}\tAssists: {player.assists}")
+      for (var i = 0; i < statsList.length; i++) {
+        var player = statsList[i];
 
-# Example usage to print sorted player stats
-print_stats(sorted_stats)
+        // Create a new row
+        var row = document.createElement("tr");
+
+        // Create cells for each attribute
+        var nameCell = document.createElement("td");
+        nameCell.textContent = player.name;
+        row.appendChild(nameCell);
+
+        var pointsCell = document.createElement("td");
+        pointsCell.textContent = player.points;
+        row.appendChild(pointsCell);
+
+        var reboundsCell = document.createElement("td");
+        reboundsCell.textContent = player.rebounds;
+        row.appendChild(reboundsCell);
+
+        var assistsCell = document.createElement("td");
+        assistsCell.textContent = player.assists;
+        row.appendChild(assistsCell);
+
+        // Append the row to the table
+        table.appendChild(row);
+      }
+    }
+
+    // Example usage to sort player stats by points
+    var sortedStats = sortStatsByAttribute(playerStatsList, 'points');
+
+    // Example usage to print sorted player stats
+    printStats(sortedStats);
+  </script>
+</head>
+<body>
+  <h1>Player Stats</h1>
+  <table id="statsTable">
+    <tr>
+      <th>Name</th>
+      <th>Points</th>
+      <th>Rebounds</th>
+      <th>Assists</th>
+    </tr>
+  </table>
+</body>
+</html>
 
 
