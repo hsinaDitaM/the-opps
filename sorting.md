@@ -13,13 +13,11 @@
         this.assists = assists;
       }
     }
-    // Example list of player statistics
     var playerStatsList = [
       new PlayerStats("LeBron James", 27.4, 8.5, 7.4),
       new PlayerStats("Stephen Curry", 30.1, 5.5, 6.2),
       new PlayerStats("Kevin Durant", 29.3, 7.1, 5.6),
       new PlayerStats("Giannis Antetokounmpo", 28.1, 11.0, 6.1)
-      // Add more player stats...
     ];
     function sortStatsByAttribute(statsList, attribute) {
       return statsList.sort(function(a, b) {
@@ -28,12 +26,10 @@
     }
     function printStats(statsList) {
       var table = document.getElementById("statsTable");
-      table.innerHTML = ""; // Clear existing table contents
+      table.innerHTML = ""; 
       for (var i = 0; i < statsList.length; i++) {
         var player = statsList[i];
-        // Create a new row
         var row = document.createElement("tr");
-        // Create cells for each attribute
         var nameCell = document.createElement("td");
         nameCell.textContent = player.name;
         row.appendChild(nameCell);
@@ -46,13 +42,10 @@
         var assistsCell = document.createElement("td");
         assistsCell.textContent = player.assists;
         row.appendChild(assistsCell);
-        // Append the row to the table
         table.appendChild(row);
       }
     }
-    // Example usage to sort player stats by points
     var sortedStats = sortStatsByAttribute(playerStatsList, 'points');
-    // Example usage to print sorted player stats
     printStats(sortedStats);
   </script>
 </head>
