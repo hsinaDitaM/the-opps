@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GET Method Example</title>
+</head>
+<body>
+  <h1>GET Method Example</h1>
+
+  <div id="result"></div>
+
+  <script>
+    const url = 'https://nfl-team-stats.p.rapidapi.com/v1/nfl-stats/teams/receiving-stats/offense/2019';
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'fdcfde47b5msh587d8d1cc3ff1dap13f3e3jsnb4f74da50f3e',
+        'X-RapidAPI-Host': 'nfl-team-stats.p.rapidapi.com'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Display the result in the HTML page
+        document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    </script>
+</body>
+</html>
