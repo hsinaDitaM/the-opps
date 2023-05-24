@@ -1,7 +1,6 @@
 # PLAN
 1. Data Structure: Define a data structure to store NBA statistics. For example, you can create a class called PlayerStats with attributes like name, points, rebounds, assists, etc. You can also create a list to store instances of the PlayerStats class.
  
-<!DOCTYPE html>
 <html>
 <head>
   <title>Player Stats</title>
@@ -14,7 +13,6 @@
         this.assists = assists;
       }
     }
-
     // Example list of player statistics
     var playerStatsList = [
       new PlayerStats("LeBron James", 27.4, 8.5, 7.4),
@@ -23,48 +21,37 @@
       new PlayerStats("Giannis Antetokounmpo", 28.1, 11.0, 6.1)
       // Add more player stats...
     ];
-
     function sortStatsByAttribute(statsList, attribute) {
       return statsList.sort(function(a, b) {
         return a[attribute] - b[attribute];
       });
     }
-
     function printStats(statsList) {
       var table = document.getElementById("statsTable");
       table.innerHTML = ""; // Clear existing table contents
-
       for (var i = 0; i < statsList.length; i++) {
         var player = statsList[i];
-
         // Create a new row
         var row = document.createElement("tr");
-
         // Create cells for each attribute
         var nameCell = document.createElement("td");
         nameCell.textContent = player.name;
         row.appendChild(nameCell);
-
         var pointsCell = document.createElement("td");
         pointsCell.textContent = player.points;
         row.appendChild(pointsCell);
-
         var reboundsCell = document.createElement("td");
         reboundsCell.textContent = player.rebounds;
         row.appendChild(reboundsCell);
-
         var assistsCell = document.createElement("td");
         assistsCell.textContent = player.assists;
         row.appendChild(assistsCell);
-
         // Append the row to the table
         table.appendChild(row);
       }
     }
-
     // Example usage to sort player stats by points
     var sortedStats = sortStatsByAttribute(playerStatsList, 'points');
-
     // Example usage to print sorted player stats
     printStats(sortedStats);
   </script>
