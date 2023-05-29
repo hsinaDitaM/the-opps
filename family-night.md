@@ -1,5 +1,7 @@
+## Top 100 NFL PLayers
+
 == The list ==
-{|class="wikitable sortable"
+
 !Rank
 !Player
 !Position
