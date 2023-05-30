@@ -37,6 +37,21 @@
 
   <script>
     const url = 'https://nfl-team-stats.p.rapidapi.com/v1/nfl-stats/teams/receiving-stats/offense/2019';
+    let favoriteTeams = []; // Array to store the user's favorite teams
+
+    function handleCheckboxChange(checkbox, teamName) {
+      if (checkbox.checked) {
+        // Add the team to the favorites array
+        favoriteTeams.push(teamName);
+      } else {
+        // Remove the team from the favorites array
+        const index = favoriteTeams.indexOf(teamName);
+        if (index !== -1) {
+          favoriteTeams.splice(index, 1);
+        }
+      }
+      console.log(favoriteTeams); // You can perform further actions with the favoriteTeams array
+    }
 
     fetch(url, {
       method: 'GET',
@@ -52,7 +67,7 @@
         // Create table header
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
-        const headers = ['Team', 'Receives', 'Touchdowns', 'Yards'];
+        const headers = ['Favorites', 'Team', 'Receives', 'Touchdowns', 'Yards'];
         
         headers.forEach(headerText => {
           const th = document.createElement('th');
@@ -67,6 +82,15 @@
         const tbody = document.createElement('tbody');
         data._embedded.teamReceivingStatsList.forEach(team => {
           const row = document.createElement('tr');
+          
+          // Create checkbox cell
+          const checkboxCell = document.createElement('td');
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.addEventListener('change', () => handleCheckboxChange(checkbox, team.name));
+          checkboxCell.appendChild(checkbox);
+          row.appendChild(checkboxCell);
+          
           const columns = [team.name, team.receives, team.touchdowns, team.yards];
           
           columns.forEach(columnText => {
