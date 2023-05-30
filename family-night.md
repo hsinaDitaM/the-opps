@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>NFL Team's History</title>
+	<title>API Response Table</title>
 	<script>
 		async function fetchData() {
 			const url = 'https://nfl-team-stats1.p.rapidapi.com/teamStats';
@@ -37,12 +37,14 @@
 					}
 					table.appendChild(row);
 				}
+				// Clear previous table, if any
+				const outputDiv = document.getElementById('output');
+				outputDiv.innerHTML = '';
 				// Append table to the HTML document
-				document.getElementById('output').appendChild(table);
+				outputDiv.appendChild(table);
 			} catch (error) {
 				console.error(error);
-			}
-		}
+			} 
 	</script>
 </head>
 <body>
