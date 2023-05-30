@@ -4,7 +4,28 @@
 <html>
 <head>
   <style>
-    /* CSS styles */
+     table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #f0f0f0;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #e0e0e0;
+      font-weight: bold;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f8f8f8;
+    }
+    tbody tr:hover {
+      background-color: #e0e0e0;
+    }
 
   </style>
 </head>
