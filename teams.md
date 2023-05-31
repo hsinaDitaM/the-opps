@@ -30,6 +30,8 @@
   </style>
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/pandas-js@1.2.0/dist/pandas.min.js"></script>
+
   <div id="maxValueTable"></div>
   <br>
   <div id="maxValueTableTouchdowns"></div>
@@ -373,6 +375,82 @@
 
       // Display the table
       document.getElementById('maxValueTableYards').appendChild(table);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+
+      fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'fdcfde47b5msh587d8d1cc3ff1dap13f3e3jsnb4f74da50f3e',
+      'X-RapidAPI-Host': 'nfl-team-stats.p.rapidapi.com'
+    }
+  })
+      .then(response => response.json())
+    .then(data => {
+      const pd = window.pandas; // Reference to the pandas-js library
+
+      // Convert the data to a DataFrame using pandas-js
+      const df = new pd.DataFrame(data._embedded.teamReceivingStatsList);
+
+      // Perform data manipulation using pandas-js
+      const maxReceives = df.max('receives');
+      const maxTouchdowns = df.max('touchdowns');
+      const maxYards = df.max('yards');
+
+      // Display the results
+      document.getElementById('maxValueTable').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Most Receives</th>
+              <th>Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${maxReceives.receives}</td>
+              <td>${maxReceives.name}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      document.getElementById('maxValueTableTouchdowns').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Most Touchdowns</th>
+              <th>Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${maxTouchdowns.touchdowns}</td>
+              <td>${maxTouchdowns.name}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      document.getElementById('maxValueTableYards').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Most Yards</th>
+              <th>Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${maxYards.yards}</td>
+              <td>${maxYards.name}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
     })
     .catch(error => {
       console.error(error);
