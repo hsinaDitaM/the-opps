@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-  <title>API Result</title>
+  <title>Upcoming Games</title>
   <style>
     table {
       border-collapse: collapse;
@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-  <h1>API Result</h1>
+  <h1>Upcoming Games</h1>
   <table id="resultTable">
     <thead>
       <tr>
