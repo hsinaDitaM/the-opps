@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -14,7 +14,7 @@
       padding: 8px;
       text-align: left;
     }
-    
+
     th {
       background-color: #f2f2f2;
     }
@@ -26,29 +26,60 @@
   <div id="output"></div>
 
   <script>
-    const url = 'https://nfl-team-stats1.p.rapidapi.com/teamStats';
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': '31c2c9240dmshb093261393c2f95p1ac6bajsn3bf7b947282a',
-        'X-RapidAPI-Host': 'nfl-team-stats1.p.rapidapi.com'
+    document.addEventListener("DOMContentLoaded", function() {
+      const url = 'https://nfl-team-stats1.p.rapidapi.com/teamStats';
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '31c2c9240dmshb093261393c2f95p1ac6bajsn3bf7b947282a',
+          'X-RapidAPI-Host': 'nfl-team-stats1.p.rapidapi.com'
+        }
+      };
+
+      const outputElement = document.getElementById('output');
+
+      async function fetchData() {
+        try {
+          const response = await fetch(url, options);
+          const data = await response.json();
+          createTable(data);
+        } catch (error) {
+          console.error(error);
+        }
       }
-    };
 
-    const outputElement = document.getElementById('output');
+      function createTable(data) {
+        const table = document.createElement('table');
 
-    async function fetchData() {
-      try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        outputElement.innerText = result;
-      } catch (error) {
-        console.error(error);
+        // Create table header
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        for (const key in data[0]) {
+          const th = document.createElement('th');
+          th.textContent = key;
+          headerRow.appendChild(th);
+        }
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        // Create table body
+        const tbody = document.createElement('tbody');
+        data.forEach((item) => {
+          const row = document.createElement('tr');
+          for (const key in item) {
+            const td = document.createElement('td');
+            td.textContent = item[key];
+            row.appendChild(td);
+          }
+          tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+
+        outputElement.appendChild(table);
       }
-    }
 
-    fetchData();
-
+      fetchData();
+    });
   </script>
 </body>
 </html>
