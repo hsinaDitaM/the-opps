@@ -1,7 +1,7 @@
 
 <html>
 <head>
-<<<<<<< HEAD
+
   <title>NFL Team History</title>
   <style>
     table {
@@ -20,9 +20,7 @@
     }
 
   </style>
-=======
-  <title>NFL Team Stats</title>
->>>>>>> 969c2849ed05bfc0d47f7b31fd72e2496b7ae433
+  
 </head>
 <body>
   <div id="output"></div>
