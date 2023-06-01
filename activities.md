@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-  <title>NFL Team Stats</title>
+  <title>NFL Team History</title>
   <style>
     table {
       border-collapse: collapse;
@@ -13,10 +13,11 @@
       padding: 8px;
       text-align: left;
     }
-
+    
     th {
       background-color: #f2f2f2;
     }
+
   </style>
 </head>
 <body>
