@@ -33,11 +33,11 @@
                 },
                 KC: {
                     label: "Kansas City Chiefs",
-                    data: [70, 80, 90, 80, 70] // Example data, replace with your own
+                    data: [12 Wins, 12 Wins, 14 Wins, 12 Wins, 14 Wins] // Example data, replace with your own
                 },
                 TB: {
                     label: "Tampa Bay Buccaneers",
-                    data: [80, 70, 60, 50, 40] // Example data, replace with your own
+                    data: [5 Wins, 7 Wins, 11 Wins, 13 Wins, 8 Wins] // Example data, replace with your own
                 }
                 // Add more teams with their respective data
             };
