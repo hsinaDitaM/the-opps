@@ -1,3 +1,4 @@
+## Team Record from the Last 5 Years 
 
 <html>
 <head>
@@ -29,15 +30,15 @@
             var teamData = {
                 NE: {
                     label: "New England Patriots",
-                    data: [11 Wins, 12 Wins, 7 Wins, 10 Wins, 8 Wins] // Example data, replace with your own
+                    data: [11, 12, 7, 10, 8] // Example data, replace with your own
                 },
                 KC: {
                     label: "Kansas City Chiefs",
-                    data: [12 Wins, 12 Wins, 14 Wins, 12 Wins, 14 Wins] // Example data, replace with your own
+                    data: [12, 12, 14, 12, 14] // Example data, replace with your own
                 },
                 TB: {
                     label: "Tampa Bay Buccaneers",
-                    data: [5 Wins, 7 Wins, 11 Wins, 13 Wins, 8 Wins] // Example data, replace with your own
+                    data: [5, 7, 11, 13, 8] // Example data, replace with your own
                 }
                 // Add more teams with their respective data
             };
