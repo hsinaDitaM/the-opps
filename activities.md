@@ -11,10 +11,11 @@
             <option value="">Select a team</option>
             <option value="NE">New England Patriots</option>
             <option value="KC">Kansas City Chiefs</option>
-            <option value="TB">Las Vegas Raiders</option>
-            <option value="TB">Miami Dolphins</option>
-            <option value="TB">New York Giants</option>
-            <option value="TB">Houston Texans</option>
+            <option value="TB">Tampa Bay Buccaneers</option>
+            <option value="LV">Las Vegas Raiders</option>
+            <option value="MD">Miami Dolphins</option>
+            <option value="NY">New York Giants</option>
+            <option value="HT">Houston Texans</option>
             <!-- Add more teams as needed -->
         </select>
     </div>
