@@ -11,7 +11,10 @@
             <option value="">Select a team</option>
             <option value="NE">New England Patriots</option>
             <option value="KC">Kansas City Chiefs</option>
-            <option value="TB">Tampa Bay Buccaneers</option>
+            <option value="TB">Las Vegas Raiders</option>
+            <option value="TB">Miami Dolphins</option>
+            <option value="TB">New York Giants</option>
+            <option value="TB">Houston Texans</option>
             <!-- Add more teams as needed -->
         </select>
     </div>
@@ -39,6 +42,18 @@
                 TB: {
                     label: "Tampa Bay Buccaneers",
                     data: [5, 7, 11, 13, 8] // Example data, replace with your own
+                },
+                LV: {
+                    label: "Las Vegas Raiders",
+                    data: [4, 7, 8, 10, 6] // Example data, replace with your own
+                },
+                MD: {
+                    label: "Miami Dolphins",
+                    data: [7, 5, 10, 9, 9] // Example data, replace with your own
+                },
+                HT: {
+                    label: "Houston Texans",
+                    data: [11, 10, 4, 2, 3] // Example data, replace with your own
                 }
                 // Add more teams with their respective data
             };
