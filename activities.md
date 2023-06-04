@@ -1,85 +1,89 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-
-  <title>NFL Team History</title>
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-  </style>
-  
+    <title>NFL Team Data Visualizer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div id="output"></div>
+    <div>
+        <select id="teamSelector">
+            <option value="">Select a team</option>
+            <option value="NE">New England Patriots</option>
+            <option value="KC">Kansas City Chiefs</option>
+            <option value="TB">Tampa Bay Buccaneers</option>
+            <!-- Add more teams as needed -->
+        </select>
+    </div>
+    <div>
+        <canvas id="chart"></canvas>
+    </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const url = 'https://nfl-team-stats1.p.rapidapi.com/teamStats';
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': '31c2c9240dmshb093261393c2f95p1ac6bajsn3bf7b947282a',
-          'X-RapidAPI-Host': 'nfl-team-stats1.p.rapidapi.com'
-        }
-      };
+        document.addEventListener("DOMContentLoaded", function () {
+            var teamSelector = document.getElementById("teamSelector");
+            var chartCanvas = document.getElementById("chart");
+            var ctx = chartCanvas.getContext("2d");
+            var chart;
 
-      const outputElement = document.getElementById('output');
+            // Define your team data
+            var teamData = {
+                NE: {
+                    label: "New England Patriots",
+                    data: [50, 60, 70, 80, 90] // Example data, replace with your own
+                },
+                KC: {
+                    label: "Kansas City Chiefs",
+                    data: [70, 80, 90, 80, 70] // Example data, replace with your own
+                },
+                TB: {
+                    label: "Tampa Bay Buccaneers",
+                    data: [80, 70, 60, 50, 40] // Example data, replace with your own
+                }
+                // Add more teams with their respective data
+            };
 
-      async function fetchData() {
-        try {
-          const response = await fetch(url, options);
-          const data = await response.json();
-          createTable(data);
-        } catch (error) {
-          console.error(error);
-        }
-      }
+            // Function to update the chart
+            function updateChart(team) {
+                var data = teamData[team].data;
+                var label = teamData[team].label;
 
-      function createTable(data) {
-        const table = document.createElement('table');
+                if (chart) {
+                    chart.destroy();
+                }
 
-        // Create table header
-        const thead = document.createElement('thead');
-        const headerRow = document.createElement('tr');
-        for (const key in data[0]) {
-          const th = document.createElement('th');
-          th.textContent = key;
-          headerRow.appendChild(th);
-        }
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
+                chart = new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: ["Metric 1", "Metric 2", "Metric 3", "Metric 4", "Metric 5"],
+                        datasets: [
+                            {
+                                label: label,
+                                data: data,
+                                backgroundColor: "rgba(75, 192, 192, 0.6)",
+                                borderColor: "rgba(75, 192, 192, 1)",
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
 
-        // Create table body
-        const tbody = document.createElement('tbody');
-        data.forEach((item) => {
-          const row = document.createElement('tr');
-          for (const key in item) {
-            const td = document.createElement('td');
-            td.textContent = item[key];
-            row.appendChild(td);
-          }
-          tbody.appendChild(row);
+            // Event listener for team selection
+            teamSelector.addEventListener("change", function () {
+                var selectedTeam = teamSelector.value;
+                if (selectedTeam) {
+                    updateChart(selectedTeam);
+                }
+            });
         });
-        table.appendChild(tbody);
-
-        outputElement.appendChild(table);
-      }
-
-      fetchData();
-    });
-  </script>
+    </script>
 </body>
 </html>
