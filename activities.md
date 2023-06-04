@@ -29,7 +29,7 @@
             var teamData = {
                 NE: {
                     label: "New England Patriots",
-                    data: [11, 12, 7, 10, 8] // Example data, replace with your own
+                    data: [11 Wins, 12 Wins, 7 Wins, 10 Wins, 8 Wins] // Example data, replace with your own
                 },
                 KC: {
                     label: "Kansas City Chiefs",
