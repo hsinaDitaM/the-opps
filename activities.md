@@ -51,6 +51,10 @@
                     label: "Miami Dolphins",
                     data: [7, 5, 10, 9, 9] // Example data, replace with your own
                 },
+                NY: {
+                    label: "New York Giants",
+                    data: [5, 4, 6, 4, 9] // Example data, replace with your own
+                },
                 HT: {
                     label: "Houston Texans",
                     data: [11, 10, 4, 2, 3] // Example data, replace with your own
