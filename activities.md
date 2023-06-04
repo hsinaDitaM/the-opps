@@ -57,7 +57,7 @@
                 },
                 HT: {
                     label: "Houston Texans",
-                    data: [11, 10, 4, 2, 3] // Example data, replace with your own
+                    data: [11, 10, 4, 2, 3] // Example data, replace with your 
                 }
                 // Add more teams with their respective data
             };
