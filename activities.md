@@ -29,7 +29,7 @@
             var teamData = {
                 NE: {
                     label: "New England Patriots",
-                    data: [50, 60, 70, 80, 90] // Example data, replace with your own
+                    data: [11, 12, 7, 10, 8] // Example data, replace with your own
                 },
                 KC: {
                     label: "Kansas City Chiefs",
@@ -54,7 +54,7 @@
                 chart = new Chart(ctx, {
                     type: "bar",
                     data: {
-                        labels: ["Metric 1", "Metric 2", "Metric 3", "Metric 4", "Metric 5"],
+                        labels: ["2018", "2019", "2020", "2021", "2022"],
                         datasets: [
                             {
                                 label: label,
