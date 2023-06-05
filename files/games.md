@@ -164,3 +164,297 @@
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.setAttribute('data-team-name', team.name);
+        checkbox.addEventListener('change', () => handleCheckboxChange(checkbox, team.name));
+        checkboxCell.appendChild(checkbox);
+        row.appendChild(checkboxCell);
+
+        const columns = [team.name, team.receives, team.touchdowns, team.yards];
+
+        columns.forEach(columnText => {
+          const td = document.createElement('td');
+          td.appendChild(document.createTextNode(columnText));
+          row.appendChild(td);
+        });
+
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+
+      document.getElementById('result').appendChild(table);
+
+      initializeCheckboxStates();
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+
+  function findMaxValue(columnIndex, data) {
+    let maxValue = 0;
+
+    data._embedded.teamReceivingStatsList.forEach(team => {
+      const value = team[columnIndex];
+      if (value > maxValue) {
+        maxValue = value;
+      }
+    });
+
+    return maxValue;
+  }
+
+ 
+  function findMaxValue(columnIndex, data) {
+    let maxValue = 0;
+    let maxTeam = '';
+
+    data._embedded.teamReceivingStatsList.forEach(team => {
+      const value = team[columnIndex];
+      if (value > maxValue) {
+        maxValue = value;
+        maxTeam = team.name;
+      }
+    });
+
+    return { value: maxValue, team: maxTeam };
+  }
+
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'fdcfde47b5msh587d8d1cc3ff1dap13f3e3jsnb4f74da50f3e',
+      'X-RapidAPI-Host': 'nfl-team-stats.p.rapidapi.com'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      const maxData = findMaxValue('receives', data);
+
+      // Create the table to display the maximum value and the team name
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      const thValue = document.createElement('th');
+      thValue.textContent = 'Most Receives';
+      headerRow.appendChild(thValue);
+      const thTeam = document.createElement('th');
+      thTeam.textContent = 'Team';
+      headerRow.appendChild(thTeam);
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      const row = document.createElement('tr');
+      const tdValue = document.createElement('td');
+      tdValue.textContent = maxData.value;
+      row.appendChild(tdValue);
+      const tdTeam = document.createElement('td');
+      tdTeam.textContent = maxData.team;
+      row.appendChild(tdTeam);
+      tbody.appendChild(row);
+      table.appendChild(tbody);
+
+      // Display the table
+      document.getElementById('maxValueTable').appendChild(table);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+      // Function to find the team with the maximum value in a specific column of the data
+  function findMaxValue(columnIndex, data) {
+    let maxValue = 0;
+    let maxTeam = '';
+
+    data._embedded.teamReceivingStatsList.forEach(team => {
+      const value = team[columnIndex];
+      if (value > maxValue) {
+        maxValue = value;
+        maxTeam = team.name;
+      }
+    });
+
+    return { value: maxValue, team: maxTeam };
+  }
+
+  // Fetch data from the API and find the maximum value for the "Touchdowns" column
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'fdcfde47b5msh587d8d1cc3ff1dap13f3e3jsnb4f74da50f3e',
+      'X-RapidAPI-Host': 'nfl-team-stats.p.rapidapi.com'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      const maxData = findMaxValue('touchdowns', data);
+
+      // Create the table to display the maximum value and the team name
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      const thValue = document.createElement('th');
+      thValue.textContent = 'Most Touchdowns';
+      headerRow.appendChild(thValue);
+      const thTeam = document.createElement('th');
+      thTeam.textContent = 'Team';
+      headerRow.appendChild(thTeam);
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      const row = document.createElement('tr');
+      const tdValue = document.createElement('td');
+      tdValue.textContent = maxData.value;
+      row.appendChild(tdValue);
+      const tdTeam = document.createElement('td');
+      tdTeam.textContent = maxData.team;
+      row.appendChild(tdTeam);
+      tbody.appendChild(row);
+      table.appendChild(tbody);
+
+      // Display the table
+      document.getElementById('maxValueTableTouchdowns').appendChild(table);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+
+  // Function to find the team with the maximum value in a specific column of the data
+  function findMaxValue(columnIndex, data) {
+    let maxValue = 0;
+    let maxTeam = '';
+
+    data._embedded.teamReceivingStatsList.forEach(team => {
+      const value = team[columnIndex];
+      if (value > maxValue) {
+        maxValue = value;
+        maxTeam = team.name;
+      }
+    });
+
+    return { value: maxValue, team: maxTeam };
+  }
+
+  // Fetch data from the API and find the maximum value for the "Yards" column
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'fdcfde47b5msh587d8d1cc3ff1dap13f3e3jsnb4f74da50f3e',
+      'X-RapidAPI-Host': 'nfl-team-stats.p.rapidapi.com'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      const maxData = findMaxValue('yards', data);
+
+      // Create the table to display the maximum value and the team name
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      const thValue = document.createElement('th');
+      thValue.textContent = 'Most Yards';
+      headerRow.appendChild(thValue);
+      const thTeam = document.createElement('th');
+      thTeam.textContent = 'Team';
+      headerRow.appendChild(thTeam);
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      const row = document.createElement('tr');
+      const tdValue = document.createElement('td');
+      tdValue.textContent = maxData.value;
+      row.appendChild(tdValue);
+      const tdTeam = document.createElement('td');
+      tdTeam.textContent = maxData.team;
+      row.appendChild(tdTeam);
+      tbody.appendChild(row);
+      table.appendChild(tbody);
+
+      // Display the table
+      document.getElementById('maxValueTableYards').appendChild(table);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+
+      fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'fdcfde47b5msh587d8d1cc3ff1dap13f3e3jsnb4f74da50f3e',
+      'X-RapidAPI-Host': 'nfl-team-stats.p.rapidapi.com'
+    }
+  })
+      .then(response => response.json())
+    .then(data => {
+      const pd = window.pandas; // Reference to the pandas-js library
+
+      // Convert the data to a DataFrame using pandas-js
+      const df = new pd.DataFrame(data._embedded.teamReceivingStatsList);
+
+      // Perform data manipulation using pandas-js
+      const maxReceives = df.max('receives');
+      const maxTouchdowns = df.max('touchdowns');
+      const maxYards = df.max('yards');
+
+      // Display the results
+      document.getElementById('maxValueTable').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Most Receives</th>
+              <th>Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${maxReceives.receives}</td>
+              <td>${maxReceives.name}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      document.getElementById('maxValueTableTouchdowns').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Most Touchdowns</th>
+              <th>Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${maxTouchdowns.touchdowns}</td>
+              <td>${maxTouchdowns.name}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      document.getElementById('maxValueTableYards').innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Most Yards</th>
+              <th>Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${maxYards.yards}</td>
+              <td>${maxYards.name}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+    })
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+</body>
+</html>
