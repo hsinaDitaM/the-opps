@@ -34,6 +34,8 @@ By harnessing the power of APIs and aggregating data from multiple sources, we a
 
 This project consists of team members like Eli Gilmour, Khalid Farah, Matulla, and Caleb
 
+Hope you have a good summer Mr. Yeung
+
 
 
 
