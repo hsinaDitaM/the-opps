@@ -32,6 +32,8 @@ Our website strives to be a go-to resource for NFL enthusiasts, providing them w
 
 By harnessing the power of APIs and aggregating data from multiple sources, we are committed to offering a comprehensive platform that caters to the diverse needs of football fans, fantasy sports enthusiasts, researchers, and anyone passionate about the statistical aspects of the NFL.
 
+This project consists of team members like Eli Gilmour, Khalid Farah, Matulla, and Caleb
+
 
 
 
