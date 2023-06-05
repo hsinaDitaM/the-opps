@@ -36,6 +36,8 @@ This project consists of team members like Eli Gilmour, Khalid Farah, Matulla, a
 
 Hope you have a good summer Mr. Yeung
 
+Goodbye 
+
 
 
 
